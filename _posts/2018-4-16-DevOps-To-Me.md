@@ -1,8 +1,8 @@
 ---
 layout: post
+title:  What is DevOps? (To Me)
 date: 2018-04-16
 ---
-# What is DevOps? (To Me)
 
 Today I had an epiphany moment.  I think I have finally come to realize what DevOps means for me, and the organization that I work for.
 
