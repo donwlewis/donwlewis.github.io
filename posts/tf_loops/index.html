@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lewis.fyi\/posts\/tf_loops\/"
-        },"genre": "posts","wordcount":  551 ,
+        },"genre": "posts","wordcount":  625 ,
         "url": "https:\/\/lewis.fyi\/posts\/tf_loops\/","datePublished": "2020-04-24","dateModified": "2020-04-24","author": {
                 "@type": "Person",
                 "name": "Don Lewis"
@@ -79,90 +79,184 @@
             <div class="post-meta-line"><span class="post-author"><a href="mailto:don.wayne.lewis@gmail.com" title="Author" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Don Lewis</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-04-24>2020-04-24</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 551 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 625 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>3 min&nbsp;</div>
         </div><div class="content" id="content"><p>Well it has been a while since I have done anything in <code>Terraform</code>. My last venture into Terraform was over a year ago when they were on some <code>0.11.x</code> version, and early beta of <code>0.12.0</code> was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved. Especially looping.</p>
 <p>Looping has definitely changed since version 0.11.x. Looping seems a lot better! After playing around with it, I was able to produce some sample code of how you would loop through a map object list:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;azurerm&#34;</span> {
-  <span style="color:#a6e22e">version</span>         = <span style="color:#e6db74">&#34;=2.0.0&#34;</span>
-  <span style="color:#a6e22e">subscription_id</span> = <span style="color:#e6db74">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
-  <span style="color:#a6e22e">features</span> {}
-}
-<span style="color:#66d9ef">
-</span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;resource_groups&#34;</span> {
-  <span style="color:#a6e22e">type</span> = map(<span style="color:#a6e22e">object</span>({
-    <span style="color:#a6e22e">location</span> = <span style="color:#a6e22e">string</span>
-  }))
-  <span style="color:#a6e22e">default</span> = {
-    <span style="color:#e6db74">&#34;group01&#34;</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;West US&#34;</span>
-    },
-    <span style="color:#e6db74">&#34;group02&#34;</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;East US&#34;</span>
-    },
-    <span style="color:#e6db74">&#34;group03&#34;</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;Central US&#34;</span>
-    },
-  }
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-terraform" data-lang="terraform"><span class="kr">provider</span> <span class="s2">&#34;azurerm&#34;</span> <span class="p">{</span>
+  <span class="na">version</span>         = <span class="s2">&#34;=2.0.0&#34;</span>
+  <span class="na">subscription_id</span> = <span class="s2">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
+  <span class="nx">features</span> <span class="p">{}</span>
+<span class="p">}</span>
+<span class="kr">
+</span><span class="kr">variable</span> <span class="s2">&#34;resource_groups&#34;</span> <span class="p">{</span>
+  <span class="na">type</span> =<span class="nb"> map</span><span class="p">(</span><span class="nx">object</span><span class="p">({</span>
+    <span class="na">location</span> = <span class="nx">string</span>
+  <span class="p">}))</span>
+  <span class="na">default</span> = <span class="p">{</span>
+    <span class="s2">&#34;group01&#34;</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">location</span> = <span class="s2">&#34;West US&#34;</span>
+    <span class="p">},</span>
+    <span class="s2">&#34;group02&#34;</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">location</span> = <span class="s2">&#34;East US&#34;</span>
+    <span class="p">},</span>
+    <span class="s2">&#34;group03&#34;</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">location</span> = <span class="s2">&#34;Central US&#34;</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
 
-}
-<span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;azurerm_resource_group&#34;</span> <span style="color:#e6db74">&#34;terraform&#34;</span> {
-  <span style="color:#a6e22e">for_each</span> = var.<span style="color:#a6e22e">resource_groups</span>
-  <span style="color:#a6e22e">name</span>     = each.<span style="color:#a6e22e">key</span>
-  <span style="color:#a6e22e">location</span> = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">location</span>
-}
-</code></pre></div><p>From this basic example, you can see that you can easily looping through a map object using the <code>for_each</code> functionality within the resource. I am also able to access the key of the map object but by <code>each.key</code>. If I were to have a map object that was only a set of key/value pairs, I could easily access the value by using <code>each.value</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;azurerm&#34;</span> {
-  <span style="color:#a6e22e">version</span>         = <span style="color:#e6db74">&#34;=2.0.0&#34;</span>
-  <span style="color:#a6e22e">subscription_id</span> = <span style="color:#e6db74">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
-  <span style="color:#a6e22e">features</span> {}
-}
+<span class="p">}</span>
+<span class="kr">resource</span> <span class="s2">&#34;azurerm_resource_group&#34;</span> <span class="s2">&#34;terraform&#34;</span> <span class="p">{</span>
+  <span class="na">for_each</span> = <span class="nb">var</span><span class="p">.</span><span class="nx">resource_groups</span>
+  <span class="na">name</span>     = <span class="nb">each</span><span class="p">.</span><span class="nx">key</span>
+  <span class="na">location</span> = <span class="nb">each</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">location</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>From this basic example, you can see that you can easily looping through a map object using the <code>for_each</code> functionality within the resource. I am also able to access the key of the map object but by <code>each.key</code>. If I were to have a map object that was only a set of key/value pairs, I could easily access the value by using <code>each.value</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-terraform" data-lang="terraform"><span class="kr">provider</span> <span class="s2">&#34;azurerm&#34;</span> <span class="p">{</span>
+<span class="na">version</span> = <span class="s2">&#34;=2.0.0&#34;</span>
+<span class="na">subscription_id</span> = <span class="s2">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
+<span class="nx">features</span> <span class="p">{}</span>
+<span class="p">}</span>
 
-}
-<span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;azurerm_resource_group&#34;</span> <span style="color:#e6db74">&#34;terraform&#34;</span> {
-  <span style="color:#a6e22e">for_each</span> = {
-      <span style="color:#a6e22e">group01</span> = <span style="color:#e6db74">&#34;West US&#34;</span>
-      <span style="color:#a6e22e">group02</span> = <span style="color:#e6db74">&#34;East US&#34;</span>
-      <span style="color:#a6e22e">group03</span> = <span style="color:#e6db74">&#34;Central US&#34;</span>
-    }
-  <span style="color:#a6e22e">name</span>     = each.<span style="color:#a6e22e">key</span>
-  <span style="color:#a6e22e">location</span> = each.<span style="color:#a6e22e">value</span>
-}
-</code></pre></div><p>This would probably not be the best way to utilize this, but it is another example of how loops work in Terraform 0.12.x.</p>
+<span class="p">}</span>
+<span class="kr">resource</span> <span class="s2">&#34;azurerm_resource_group&#34;</span> <span class="s2">&#34;terraform&#34;</span> <span class="p">{</span>
+<span class="na">for_each</span> = <span class="p">{</span>
+<span class="na">group01</span> = <span class="s2">&#34;West US&#34;</span>
+<span class="na">group02</span> = <span class="s2">&#34;East US&#34;</span>
+<span class="na">group03</span> = <span class="s2">&#34;Central US&#34;</span>
+<span class="p">}</span>
+<span class="na">name</span> = <span class="nb">each</span><span class="p">.</span><span class="nx">key</span>
+<span class="na">location</span> = <span class="nb">each</span><span class="p">.</span><span class="nx">value</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>This would probably not be the best way to utilize this, but it is another example of how loops work in Terraform 0.12.x.</p>
 <p>Another thing to note is that this <code>for_each</code> expression does not seem to work on list objects. For that it seems like you are stuck with leveraging the old <code>count</code> expression. To achieve the same output from above, but with leveraging the <code>count</code> expression, our code would look something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;azurerm&#34;</span> {
-  <span style="color:#a6e22e">version</span>         = <span style="color:#e6db74">&#34;=2.0.0&#34;</span>
-  <span style="color:#a6e22e">subscription_id</span> = <span style="color:#e6db74">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
-  <span style="color:#a6e22e">features</span> {}
-}
-<span style="color:#66d9ef">
-</span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;resource_groups&#34;</span> {
-  <span style="color:#a6e22e">type</span> = list(<span style="color:#a6e22e">object</span>({
-    <span style="color:#a6e22e">name</span>     = <span style="color:#a6e22e">string</span>
-    <span style="color:#a6e22e">location</span> = <span style="color:#a6e22e">string</span>
-  }))
-  <span style="color:#a6e22e">default</span> = [
-    {
-      <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;group01&#34;</span>
-      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;West US&#34;</span>
-    },
-    {
-      <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;group02&#34;</span>
-      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;East US&#34;</span>
-    },
-    {
-      <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;group03&#34;</span>
-      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;Central US&#34;</span>
-    },
-  ]
-}
-<span style="color:#66d9ef">
-</span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;azurerm_resource_group&#34;</span> <span style="color:#e6db74">&#34;terraform&#34;</span> {
-  <span style="color:#a6e22e">count</span>    = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">length</span>(var.<span style="color:#a6e22e">resource_groups</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lookup</span>(var.<span style="color:#a6e22e">resource_groups</span>[count.<span style="color:#a6e22e">index</span>], <span style="color:#e6db74">&#34;name&#34;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lookup</span>(var.<span style="color:#a6e22e">resource_groups</span>[count.<span style="color:#a6e22e">index</span>], <span style="color:#e6db74">&#34;location&#34;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-}
-</code></pre></div><p>This relies on the fact that your index matches exactly what you are looking for. This code is not as neat as the previous code, but it gets the job done.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-terraform" data-lang="terraform"><span class="kr">provider</span> <span class="s2">&#34;azurerm&#34;</span> <span class="p">{</span>
+  <span class="na">version</span>         = <span class="s2">&#34;=2.0.0&#34;</span>
+  <span class="na">subscription_id</span> = <span class="s2">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
+  <span class="nx">features</span> <span class="p">{}</span>
+<span class="p">}</span>
+<span class="kr">
+</span><span class="kr">variable</span> <span class="s2">&#34;resource_groups&#34;</span> <span class="p">{</span>
+  <span class="na">type</span> =<span class="nb"> list</span><span class="p">(</span><span class="nx">object</span><span class="p">({</span>
+    <span class="na">name</span>     = <span class="nx">string</span>
+    <span class="na">location</span> = <span class="nx">string</span>
+  <span class="p">}))</span>
+  <span class="na">default</span> = <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">name</span>     = <span class="s2">&#34;group01&#34;</span>
+      <span class="na">location</span> = <span class="s2">&#34;West US&#34;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">name</span>     = <span class="s2">&#34;group02&#34;</span>
+      <span class="na">location</span> = <span class="s2">&#34;East US&#34;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">name</span>     = <span class="s2">&#34;group03&#34;</span>
+      <span class="na">location</span> = <span class="s2">&#34;Central US&#34;</span>
+    <span class="p">},</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+<span class="kr">
+</span><span class="kr">resource</span> <span class="s2">&#34;azurerm_resource_group&#34;</span> <span class="s2">&#34;terraform&#34;</span> <span class="p">{</span>
+  <span class="na">count</span>    = <span class="s2">&#34;</span><span class="si">${</span><span class="nx">length</span><span class="p">(</span><span class="nb">var</span><span class="p">.</span><span class="nx">resource_groups</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="na">name</span>     = <span class="s2">&#34;</span><span class="si">${</span><span class="nx">lookup</span><span class="p">(</span><span class="nb">var</span><span class="p">.</span><span class="nx">resource_groups</span><span class="p">[</span><span class="nb">count</span><span class="p">.</span><span class="nx">index</span><span class="p">],</span> <span class="s2">&#34;name&#34;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="na">location</span> = <span class="s2">&#34;</span><span class="si">${</span><span class="nx">lookup</span><span class="p">(</span><span class="nb">var</span><span class="p">.</span><span class="nx">resource_groups</span><span class="p">[</span><span class="nb">count</span><span class="p">.</span><span class="nx">index</span><span class="p">],</span> <span class="s2">&#34;location&#34;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>This relies on the fact that your index matches exactly what you are looking for. This code is not as neat as the previous code, but it gets the job done.</p>
 <p>There are other instances when you will probably need to leverage <code>count</code> vs <code>for_each</code>. HashiCorp provides a decent explanation <a href="https://www.terraform.io/docs/configuration/resources.html#when-to-use-for_each-instead-of-count" target="_blank" rel="noopener noreffer">here</a>
 .</p>
 <p>This type of functionality has got me excited about looking at Terraform again. Looping was such a pain in the older versions of Terraform, and this is much nicer and cleaner. I can also being to see how this can be converted into modules, and leveraging <code>tfvars</code> files to make this more modular. More updates to come as I discover more!</p>
