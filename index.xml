@@ -1,0 +1,118 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>lewis.fyi | lewis.fyi</title>
+        <link>https://lewis.fyi/</link>
+        <description>lewis.fyi | lewis.fyi</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 24 Apr 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lewis.fyi/" rel="self" type="application/rss+xml" /><item>
+                <title>Posts</title>
+                <link>https://lewis.fyi/posts/</link>
+                <pubDate>Fri, 24 Apr 2020 00:00:00 &#43;0000</pubDate><guid>https://lewis.fyi/posts/</guid>
+                <description></description>
+            </item><item>
+                <title></title>
+                <link>https://lewis.fyi/about/</link>
+                <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><guid>https://lewis.fyi/about/</guid>
+                <description>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
+</description>
+            </item><item>
+                <title></title>
+                <link>https://lewis.fyi/resume/</link>
+                <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><guid>https://lewis.fyi/resume/</guid>
+                <description>&lt;h1 id=&#34;don-lewis&#34;&gt;Don Lewis&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;mailto:don.wayne.lewis@gmail.com&#34; rel=&#34;noopener noreffer&#34;&gt;don.wayne.lewis@gmail.com&lt;/a&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;DevOps engineer with over 10 years of experience in the Information Technology field.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;experience&#34;&gt;Experience&lt;/h2&gt;
+
+
+
+
+
+&lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;DevOps Engineer&lt;/div&gt;&lt;/b&gt;
+&lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;Abbott Labs&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;November 2014 to Present&lt;/div&gt;
+&lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
+&lt;hr&gt;
+
+
+
+
+
+&lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;Sr. Systems Administrator&lt;/div&gt;&lt;/b&gt;
+&lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;June 2013 to November 2014&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;St. Jude Medical&lt;/div&gt;
+&lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
+&lt;p&gt;Implemented powershell scripts and automation to decrease man hours spent on tasks, and ensure consistency in the organization. Help define and deploy global IT standards across global infrastructure. Deployed, maintained and supported VMware virtual infrastructure across global organization. Helped define standards and procedures for VMware virtual infrastructure (HA, DRS, vDS). Supported Windows operating systems across the global organization. Helped standardize processes and procedures for IT operations across the global organization.&lt;/p&gt;
+&lt;hr&gt;
+
+
+
+
+
+&lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;Virtualization Engineer&lt;/div&gt;&lt;/b&gt;
+&lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;February 2013 to June 2013&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;NBC Universal&lt;/div&gt;
+&lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;Universal City, CA&lt;/div&gt;
+&lt;p&gt;Engineered, deployed, and maintained VMware virtual infrastructure running on Cisco UCS and vBlock platforms for private cloud instance. Collected capacity report metrics to help plan for capacity and growth. Worked with Oracle business group to deploy a vBlock instance dedicated for Oracle virtualization, as well as employing configuration standards to ensure optimal performance of the Oracle VMs. Deployed VM guests as requested by various business units in the organization.&lt;/p&gt;
+&lt;hr&gt;
+
+
+
+
+
+&lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;Systems Engineer&lt;/div&gt;&lt;/b&gt;
+&lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;September 2012 to February&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;M-Go (Technicolor, Inc.)&lt;/div&gt;
+&lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;Burbank, CA&lt;/div&gt;
+&lt;p&gt;Deployed, maintained, and supported VMware virtual infrastructure for both production and development environments, and implemented HA and DR technologies.. Deployed, maintained, and supported open source technologies to provide an infrastructure for M-GO application, including Linux, Incinga, Nagios, LDAP, Squid, Puppet, and Cobbler. Provided level three support for M-GO application running Linux, JBOSS, Magentom, MySQL, and Oracle, and well as in-depth troubleshooting using REST APIs, and JBOSS logging.&lt;/p&gt;
+&lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
+
+
+
+
+&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Chef&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Ruby&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Golang&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Bash&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Linux&lt;/div&gt;
+
+
+
+
+&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
+
+
+
+
+
+&lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;B.S. Electronics and Communications Engineering&lt;/div&gt;&lt;/b&gt;
+&lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;ITT Technical Institute&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;San Diego, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;March 2005&lt;/div&gt;
+
+
+
+
+
+&lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;A.S. Computer and Electronics Engineering&lt;/div&gt;&lt;/b&gt;
+&lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;ITT Technical Institute&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;San Diego, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;June 2003&lt;/div&gt;
+</description>
+            </item></channel>
+</rss>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Looping in Terraform | lewis.fyi</title>
+        <meta name="Description" content=""><meta property="og:title" content="Looping in Terraform" />
+<meta property="og:description" content="Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lewis.fyi/posts/tf_loops/" />
+<meta property="article:published_time" content="2020-04-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Looping in Terraform"/>
+<meta name="twitter:description" content="Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved."/>
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#da532c">
+<link rel="canonical" href="https://lewis.fyi/posts/tf_loops/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Looping in Terraform",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/lewis.fyi\/posts\/tf_loops\/"
+        },"genre": "posts","wordcount":  551 ,
+        "url": "https:\/\/lewis.fyi\/posts\/tf_loops\/","datePublished": "2020-04-24","dateModified": "2020-04-24","author": {
+                "@type": "Person",
+                "name": "Don Lewis"
+            },"description": ""
+    }
+    </script></head>
+    <body><script>
+            if (!window.localStorage || !window.localStorage.getItem('theme')) {window.isDark = '' === 'dark';} else {
+                window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            }
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/">lewis.fyi</a>
+        </div>
+        <div class="menu"><a class="menu-item" href="/posts/" rel="noopener noreffer">Posts</a><a class="menu-item" href="/about" rel="noopener noreffer">About</a><a class="menu-item" href="/resume" rel="noopener noreffer">Resume</a><span class="menu-item">|</span>
+            <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="header-title">
+                <a href="/">lewis.fyi</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="" rel="noopener noreffer">Posts</a><a class="menu-item" href="/about" title="" rel="noopener noreffer">About</a><a class="menu-item" href="/resume" title="" rel="noopener noreffer">Resume</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+
+<script>
+    window.desktopHeaderMode =  null ;
+    window.mobileHeaderMode =  null ;
+</script>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Looping in Terraform</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="mailto:don.wayne.lewis@gmail.com" title="Author" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Don Lewis</a>
+</span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-04-24>2020-04-24</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 551 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>3 min&nbsp;</div>
+        </div><div class="content" id="content"><p>Well it has been a while since I have done anything in <code>Terraform</code>. My last venture into Terraform was over a year ago when they were on some <code>0.11.x</code> version, and early beta of <code>0.12.0</code> was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved. Especially looping.</p>
+<p>Looping has definitely changed since version 0.11.x. Looping seems a lot better! After playing around with it, I was able to produce some sample code of how you would loop through a map object list:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;azurerm&#34;</span> {
+  <span style="color:#a6e22e">version</span>         = <span style="color:#e6db74">&#34;=2.0.0&#34;</span>
+  <span style="color:#a6e22e">subscription_id</span> = <span style="color:#e6db74">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
+  <span style="color:#a6e22e">features</span> {}
+}
+<span style="color:#66d9ef">
+</span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;resource_groups&#34;</span> {
+  <span style="color:#a6e22e">type</span> = map(<span style="color:#a6e22e">object</span>({
+    <span style="color:#a6e22e">location</span> = <span style="color:#a6e22e">string</span>
+  }))
+  <span style="color:#a6e22e">default</span> = {
+    <span style="color:#e6db74">&#34;group01&#34;</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;West US&#34;</span>
+    },
+    <span style="color:#e6db74">&#34;group02&#34;</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;East US&#34;</span>
+    },
+    <span style="color:#e6db74">&#34;group03&#34;</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;Central US&#34;</span>
+    },
+  }
+
+}
+<span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;azurerm_resource_group&#34;</span> <span style="color:#e6db74">&#34;terraform&#34;</span> {
+  <span style="color:#a6e22e">for_each</span> = var.<span style="color:#a6e22e">resource_groups</span>
+  <span style="color:#a6e22e">name</span>     = each.<span style="color:#a6e22e">key</span>
+  <span style="color:#a6e22e">location</span> = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">location</span>
+}
+</code></pre></div><p>From this basic example, you can see that you can easily looping through a map object using the <code>for_each</code> functionality within the resource. I am also able to access the key of the map object but by <code>each.key</code>. If I were to have a map object that was only a set of key/value pairs, I could easily access the value by using <code>each.value</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;azurerm&#34;</span> {
+  <span style="color:#a6e22e">version</span>         = <span style="color:#e6db74">&#34;=2.0.0&#34;</span>
+  <span style="color:#a6e22e">subscription_id</span> = <span style="color:#e6db74">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
+  <span style="color:#a6e22e">features</span> {}
+}
+
+}
+<span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;azurerm_resource_group&#34;</span> <span style="color:#e6db74">&#34;terraform&#34;</span> {
+  <span style="color:#a6e22e">for_each</span> = {
+      <span style="color:#a6e22e">group01</span> = <span style="color:#e6db74">&#34;West US&#34;</span>
+      <span style="color:#a6e22e">group02</span> = <span style="color:#e6db74">&#34;East US&#34;</span>
+      <span style="color:#a6e22e">group03</span> = <span style="color:#e6db74">&#34;Central US&#34;</span>
+    }
+  <span style="color:#a6e22e">name</span>     = each.<span style="color:#a6e22e">key</span>
+  <span style="color:#a6e22e">location</span> = each.<span style="color:#a6e22e">value</span>
+}
+</code></pre></div><p>This would probably not be the best way to utilize this, but it is another example of how loops work in Terraform 0.12.x.</p>
+<p>Another thing to note is that this <code>for_each</code> expression does not seem to work on list objects. For that it seems like you are stuck with leveraging the old <code>count</code> expression. To achieve the same output from above, but with leveraging the <code>count</code> expression, our code would look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;azurerm&#34;</span> {
+  <span style="color:#a6e22e">version</span>         = <span style="color:#e6db74">&#34;=2.0.0&#34;</span>
+  <span style="color:#a6e22e">subscription_id</span> = <span style="color:#e6db74">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
+  <span style="color:#a6e22e">features</span> {}
+}
+<span style="color:#66d9ef">
+</span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;resource_groups&#34;</span> {
+  <span style="color:#a6e22e">type</span> = list(<span style="color:#a6e22e">object</span>({
+    <span style="color:#a6e22e">name</span>     = <span style="color:#a6e22e">string</span>
+    <span style="color:#a6e22e">location</span> = <span style="color:#a6e22e">string</span>
+  }))
+  <span style="color:#a6e22e">default</span> = [
+    {
+      <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;group01&#34;</span>
+      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;West US&#34;</span>
+    },
+    {
+      <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;group02&#34;</span>
+      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;East US&#34;</span>
+    },
+    {
+      <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;group03&#34;</span>
+      <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;Central US&#34;</span>
+    },
+  ]
+}
+<span style="color:#66d9ef">
+</span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;azurerm_resource_group&#34;</span> <span style="color:#e6db74">&#34;terraform&#34;</span> {
+  <span style="color:#a6e22e">count</span>    = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">length</span>(var.<span style="color:#a6e22e">resource_groups</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#a6e22e">name</span>     = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lookup</span>(var.<span style="color:#a6e22e">resource_groups</span>[count.<span style="color:#a6e22e">index</span>], <span style="color:#e6db74">&#34;name&#34;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#a6e22e">location</span> = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lookup</span>(var.<span style="color:#a6e22e">resource_groups</span>[count.<span style="color:#a6e22e">index</span>], <span style="color:#e6db74">&#34;location&#34;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+}
+</code></pre></div><p>This relies on the fact that your index matches exactly what you are looking for. This code is not as neat as the previous code, but it gets the job done.</p>
+<p>There are other instances when you will probably need to leverage <code>count</code> vs <code>for_each</code>. HashiCorp provides a decent explanation <a href="https://www.terraform.io/docs/configuration/resources.html#when-to-use-for_each-instead-of-count" target="_blank" rel="noopener noreffer">here</a>
+.</p>
+<p>This type of functionality has got me excited about looking at Terraform again. Looping was such a pain in the older versions of Terraform, and this is much nicer and cleaner. I can also being to see how this can be converted into modules, and leveraging <code>tfvars</code> files to make this more modular. More updates to come as I discover more!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2020-04-24</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section></section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div class="comment"></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer"><i class="far fa-heart fa-fw"></i> LoveIt</a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="mailto:don.wayne.lewis@gmail.com" target="_blank">Don Lewis</a></span></div>
+    </div>
+</footer>
+</div><a href="#" class="dynamic-to-top animated faster" id="dynamic-to-top">
+            <i class="fas fa-chevron-up fa-fw"></i>
+        </a><script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lightGallery(document.getElementById('content'), {
+                selector: '.lightgallery',
+                speed: 400,
+                hideBarsDelay: 2000,
+                thumbnail: true,
+                exThumbImage: 'data-thumbnail',
+                thumbWidth: 80,
+                thumbContHeight: 80,
+            });
+        });
+    </script><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/js/theme.min.js"></script></body>
+</html>

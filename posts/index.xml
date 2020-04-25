@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on lewis.fyi</title>
+    <link>https://lewis.fyi/posts/</link>
+    <description>Recent content in Posts on lewis.fyi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 24 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://lewis.fyi/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Looping in Terraform</title>
+      <link>https://lewis.fyi/posts/tf_loops/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lewis.fyi/posts/tf_loops/</guid>
+      <description>Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&amp;rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved.</description>
+    </item>
+    
+  </channel>
+</rss>
