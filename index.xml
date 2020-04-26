@@ -12,8 +12,28 @@
                 <title></title>
                 <link>https://lewis.fyi/about/</link>
                 <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><guid>https://lewis.fyi/about/</guid>
-                <description>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
-&lt;p&gt;Updates&lt;/p&gt;
+                <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
+&lt;p style=&#34;text-align:center;&#34;&gt;&lt;img src=&#34;https://lewis.fyi/images/me.png&#34; width=&#34;200&#34;&gt;
+&lt;h2 id=&#34;personally&#34;&gt;Personally&lt;/h2&gt;
+&lt;h3 id=&#34;christian&#34;&gt;Christian&lt;/h3&gt;
+&lt;p&gt;I am a Christian that attends a non-denominational church. From a theological perspective, I lean towards Calvinist/Reformed, but I have many friends who have different theological views, and still see them as followers of Christ. I believe that several theological points are debatable, except for the gospel message:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For I delivered to you as of first importance what I also received: that Christ died for our sins in accordance with the Scriptures, that he was buried, that he was raised on the third day in accordance with the Scriptures, and that he appeared to
+, then to the twelve. Then he appeared to more than five hundred brothers at one time, most of whom are still alive, though some have fallen asleep.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://my.bible.com/bible/59/1CO.15.3-6&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;1 Corinthians 15:3-6&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the true gospel message that delivers salvation from our sin.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;for all have sinned and fall short of the glory of God, and are justified by his grace as a gift, through the redemption that is in Christ Jesus, whom God put forward as a propitiation by his blood, to be received by faith. This was to show God’s righteousness, because in his divine forbearance he had passed over former sins.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://my.bible.com/bible/59/ROM.3.23-25&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;Romans 3:23-25&lt;/a&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;family&#34;&gt;Family&lt;/h3&gt;
+&lt;p&gt;I am a happily married man with a family of four children. Two of my children are biological and two of them are soon to be adopted. The experience of fostering and adopting a child has been a wonderful, and character building experience.&lt;/p&gt;
+&lt;h2 id=&#34;professionally&#34;&gt;Professionally&lt;/h2&gt;
+&lt;h3 id=&#34;devops-engineer&#34;&gt;DevOps Engineer&lt;/h3&gt;
+&lt;p&gt;I am a DevOps engineer by tried. I love coding and automating things! This is very strange to me because when I took coding classes back in college I told my self I would never want to be a developer. Oops! I went to college and studied electrical engineering, but eventually made my way into IT. I started from a service desk position, moved into systems administration and engineering, and finally landed in the DevOps space. I really enjoy solving problems and providing solutions using code! Code All The Things!&lt;/p&gt;
 </description>
             </item><item>
                 <title></title>
@@ -36,6 +56,7 @@
 &lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;Abbott Labs&lt;/div&gt;
 &lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;November 2014 to Present&lt;/div&gt;
 &lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
+&lt;p&gt;Technical lead for a talented team of DevOps engineers who focus on automating infrastructure components, and develope testing and delivery pipelines to help deliver infrastructure components as scale. Developing solutions for private cloud infrastructure, as well as Azure cloud infrastructure. Fully deployed Chef infrastructure components, including developing pipelines for Chef code testing with ChefSpec and Test Kitchen, and well ad cookbook delivery to Chef server via an SDLC model. Closely work with business development teams to help automate application deployment and testing pipelines. Fully developed solution in GoLang for building infrastructure servers on private virtual infrastructure, pulling customer requests from our internal ticketing system. Automated internal infrastructure components including NSX, Palo Alto, and F5 configurations.&lt;/p&gt;
 &lt;hr&gt;
 
 
@@ -68,29 +89,50 @@
 &lt;div style=&#34;text-align: left; width: 33%; display: inline-block;&#34;&gt;September 2012 to February&lt;/div&gt;
 &lt;div style=&#34;text-align: center; width: 33%;  display: inline-block;&#34;&gt;M-Go (Technicolor, Inc.)&lt;/div&gt;
 &lt;div style=&#34;text-align: right; width: 33%; display: inline-block;&#34;&gt;Burbank, CA&lt;/div&gt;
-&lt;p&gt;Deployed, maintained, and supported VMware virtual infrastructure for both production and development environments, and implemented HA and DR technologies.. Deployed, maintained, and supported open source technologies to provide an infrastructure for M-GO application, including Linux, Incinga, Nagios, LDAP, Squid, Puppet, and Cobbler. Provided level three support for M-GO application running Linux, JBOSS, Magentom, MySQL, and Oracle, and well as in-depth troubleshooting using REST APIs, and JBOSS logging.&lt;/p&gt;
+&lt;p&gt;Deployed, maintained, and supported VMware virtual infrastructure for both production and development environments, and implemented HA and DR technologies.. Deployed, maintained, and supported open source technologies to provide an infrastructure for M-GO application, including Linux,
+, Nagios, LDAP, Squid, Puppet, and Cobbler. Provided level three support for M-GO application running Linux, JBOSS, Magento, MySQL, and Oracle, and well as in-depth troubleshooting using REST APIs, and JBOSS logging.&lt;/p&gt;
 &lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
 
 
 
 
-&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Chef&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Chef&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Ruby&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Ruby&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Golang&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Golang&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Bash&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Git&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: left; width: 10%; display: inline-block;&#34;&gt;Linux&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;GitLab&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;CI/CD&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Packer&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;PowerShell&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Bash&lt;/div&gt;
+
+
+
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Linux&lt;/div&gt;
 
 
 

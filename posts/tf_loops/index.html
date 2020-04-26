@@ -7,14 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Looping in Terraform | lewis.fyi</title>
         <meta name="Description" content=""><meta property="og:title" content="Looping in Terraform" />
-<meta property="og:description" content="Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved." />
+<meta property="og:description" content="Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&rsquo;t seem to be a good fit for what I was trying to do, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lewis.fyi/posts/tf_loops/" />
 <meta property="article:published_time" content="2020-04-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-04-24T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Looping in Terraform"/>
-<meta name="twitter:description" content="Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved."/>
+<meta name="twitter:description" content="Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&rsquo;t seem to be a good fit for what I was trying to do, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved."/>
 <meta name="theme-color" content="#ffffff">
 <meta name="msapplication-TileColor" content="#da532c">
 <link rel="canonical" href="https://lewis.fyi/posts/tf_loops/" />
@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lewis.fyi\/posts\/tf_loops\/"
-        },"genre": "posts","wordcount":  625 ,
+        },"genre": "posts","wordcount":  621 ,
         "url": "https:\/\/lewis.fyi\/posts\/tf_loops\/","datePublished": "2020-04-24","dateModified": "2020-04-24","author": {
                 "@type": "Person",
                 "name": "Don Lewis"
@@ -79,9 +79,9 @@
             <div class="post-meta-line"><span class="post-author"><a href="mailto:don.wayne.lewis@gmail.com" title="Author" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Don Lewis</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-04-24>2020-04-24</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 625 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 621 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>3 min&nbsp;</div>
-        </div><div class="content" id="content"><p>Well it has been a while since I have done anything in <code>Terraform</code>. My last venture into Terraform was over a year ago when they were on some <code>0.11.x</code> version, and early beta of <code>0.12.0</code> was leaking out. At the time, it didn&rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved. Especially looping.</p>
+        </div><div class="content" id="content"><p>Well it has been a while since I have done anything in <code>Terraform</code>. My last venture into Terraform was over a year ago when they were on some <code>0.11.x</code> version, and early beta of <code>0.12.0</code> was leaking out. At the time, it didn&rsquo;t seem to be a good fit for what I was trying to do, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved. Especially looping.</p>
 <p>Looping has definitely changed since version 0.11.x. Looping seems a lot better! After playing around with it, I was able to produce some sample code of how you would loop through a map object list:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -145,7 +145,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>From this basic example, you can see that you can easily looping through a map object using the <code>for_each</code> functionality within the resource. I am also able to access the key of the map object but by <code>each.key</code>. If I were to have a map object that was only a set of key/value pairs, I could easily access the value by using <code>each.value</code>:</p>
+</div><p>From this basic example, you can see that you can easily loop through a map object using the <code>for_each</code> expression within the resource. I am also able to access the key of the map object by calling <code>each.key</code>. If I were to have a map object that was only a set of key/value pairs, I could easily access the value by using <code>each.value</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -185,7 +185,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>This would probably not be the best way to utilize this, but it is another example of how loops work in Terraform 0.12.x.</p>
-<p>Another thing to note is that this <code>for_each</code> expression does not seem to work on list objects. For that it seems like you are stuck with leveraging the old <code>count</code> expression. To achieve the same output from above, but with leveraging the <code>count</code> expression, our code would look something like this:</p>
+<p>Another thing to note is that this <code>for_each</code> expression does not seem to work on list objects. For that it seems like you are stuck with leveraging the old <code>count</code> expression. To achieve the same output from above, but using the <code>count</code> expression, our code would look something like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -259,7 +259,7 @@
 </div><p>This relies on the fact that your index matches exactly what you are looking for. This code is not as neat as the previous code, but it gets the job done.</p>
 <p>There are other instances when you will probably need to leverage <code>count</code> vs <code>for_each</code>. HashiCorp provides a decent explanation <a href="https://www.terraform.io/docs/configuration/resources.html#when-to-use-for_each-instead-of-count" target="_blank" rel="noopener noreffer">here</a>
 .</p>
-<p>This type of functionality has got me excited about looking at Terraform again. Looping was such a pain in the older versions of Terraform, and this is much nicer and cleaner. I can also being to see how this can be converted into modules, and leveraging <code>tfvars</code> files to make this more modular. More updates to come as I discover more!</p>
+<p>This type of functionality has me excited about looking at Terraform again. Looping was such a pain in the older versions of Terraform, and this is much nicer and cleaner. I can also begin to see how this can be converted into modules, leveraging <code>tfvars</code> files to make this more modular. More updates to come as I discover more!</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

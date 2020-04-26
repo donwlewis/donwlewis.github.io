@@ -17,7 +17,7 @@
       <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lewis.fyi/posts/tf_loops/</guid>
-      <description>Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&amp;rsquo;t seem a good fit for what I was trying to do at the time, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved.</description>
+      <description>Well it has been a while since I have done anything in Terraform. My last venture into Terraform was over a year ago when they were on some 0.11.x version, and early beta of 0.12.0 was leaking out. At the time, it didn&amp;rsquo;t seem to be a good fit for what I was trying to do, so I had made the decision to go with writing straight golang code. Since then, it seems some of the hang ups I had with Terraform have been solved.</description>
     </item>
     
   </channel>
