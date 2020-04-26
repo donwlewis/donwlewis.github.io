@@ -54,8 +54,8 @@
 
 &lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;DevOps Engineer&lt;/div&gt;&lt;/b&gt;
 &lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;Abbott Labs&lt;/div&gt;
-&lt;div style=&#34;text-align: center; width: 30%;  display: inline-block;&#34;&gt;November 2014 to Present&lt;/div&gt;
-&lt;div style=&#34;text-align: right; width: 20%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%;  display: inline-block;&#34;&gt;Nov 2014 - Present&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
 &lt;p&gt;Technical lead for a talented team of DevOps engineers who focus on automating infrastructure components, and develope testing and delivery pipelines to help deliver infrastructure components as scale. Developing solutions for private cloud infrastructure, as well as Azure cloud infrastructure. Fully deployed Chef infrastructure components, including developing pipelines for Chef code testing with ChefSpec and Test Kitchen, and well ad cookbook delivery to Chef server via an SDLC model. Closely work with business development teams to help automate application deployment and testing pipelines. Fully developed solution in GoLang for building infrastructure servers on private virtual infrastructure, pulling customer requests from our internal ticketing system. Automated internal infrastructure components including NSX, Palo Alto, and F5 configurations.&lt;/p&gt;
 &lt;hr&gt;
 
@@ -65,8 +65,8 @@
 
 &lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;Sr. Systems Administrator&lt;/div&gt;&lt;/b&gt;
 &lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;St. Jude Medical&lt;/div&gt;
-&lt;div style=&#34;text-align: center; width: 30%;  display: inline-block;&#34;&gt;June 2013 to November 2014&lt;/div&gt;
-&lt;div style=&#34;text-align: right; width: 20%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%;  display: inline-block;&#34;&gt;June 2013 - Nov 2014&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;Sylmar, CA&lt;/div&gt;
 &lt;p&gt;Implemented powershell scripts and automation to decrease man hours spent on tasks, and ensure consistency in the organization. Help define and deploy global IT standards across global infrastructure. Deployed, maintained and supported VMware virtual infrastructure across global organization. Helped define standards and procedures for VMware virtual infrastructure (HA, DRS, vDS). Supported Windows operating systems across the global organization. Helped standardize processes and procedures for IT operations across the global organization.&lt;/p&gt;
 &lt;hr&gt;
 
@@ -76,8 +76,8 @@
 
 &lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;Virtualization Engineer&lt;/div&gt;&lt;/b&gt;
 &lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;NBC Universal&lt;/div&gt;
-&lt;div style=&#34;text-align: center; width: 30%;  display: inline-block;&#34;&gt;February 2013 to June 2013&lt;/div&gt;
-&lt;div style=&#34;text-align: right; width: 20%; display: inline-block;&#34;&gt;Universal City, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%;  display: inline-block;&#34;&gt;Feb 2013 - June 2013&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;Universal City, CA&lt;/div&gt;
 &lt;p&gt;Engineered, deployed, and maintained VMware virtual infrastructure running on Cisco UCS and vBlock platforms for private cloud instance. Collected capacity report metrics to help plan for capacity and growth. Worked with Oracle business group to deploy a vBlock instance dedicated for Oracle virtualization, as well as employing configuration standards to ensure optimal performance of the Oracle VMs. Deployed VM guests as requested by various business units in the organization.&lt;/p&gt;
 &lt;hr&gt;
 
@@ -87,8 +87,8 @@
 
 &lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;Systems Engineer&lt;/div&gt;&lt;/b&gt;
 &lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;M-Go (Technicolor, Inc.)&lt;/div&gt;
-&lt;div style=&#34;text-align: center; width: 30%;  display: inline-block;&#34;&gt;September 2012 to February&lt;/div&gt;
-&lt;div style=&#34;text-align: right; width: 20%; display: inline-block;&#34;&gt;Burbank, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%;  display: inline-block;&#34;&gt;Sept 2012 - Feb 2013&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;Burbank, CA&lt;/div&gt;
 &lt;p&gt;Deployed, maintained, and supported VMware virtual infrastructure for both production and development environments, and implemented HA and DR technologies.. Deployed, maintained, and supported open source technologies to provide an infrastructure for M-GO application, including Linux,
 , Nagios, LDAP, Squid, Puppet, and Cobbler. Provided level three support for M-GO application running Linux, JBOSS, Magento, MySQL, and Oracle, and well as in-depth troubleshooting using REST APIs, and JBOSS logging.&lt;/p&gt;
 &lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
@@ -96,43 +96,43 @@
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Chef&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Chef&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Ruby&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Ruby&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Golang&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Golang&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Git&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Git&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;GitLab&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;GitLab&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;CI/CD&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;CI/CD&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Packer&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Packer&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;PowerShell&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;PowerShell&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Bash&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Bash&lt;/div&gt;
 
 
 
-&lt;div style=&#34;text-align: center; width: 15%; display: inline-block;&#34;&gt;Linux&lt;/div&gt;
+&lt;div style=&#34;text-align: center; width: 10%; display: inline-block;&#34;&gt;Linux&lt;/div&gt;
 
 
 
@@ -145,8 +145,8 @@
 
 &lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;B.S. Electronics and Communications Engineering&lt;/div&gt;&lt;/b&gt;
 &lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;ITT Technical Institute&lt;/div&gt;
-&lt;div style=&#34;text-align: center; width: 30%;  display: inline-block;&#34;&gt;San Diego, CA&lt;/div&gt;
-&lt;div style=&#34;text-align: right; width: 20%; display: inline-block;&#34;&gt;March 2005&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%;  display: inline-block;&#34;&gt;San Diego, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;March 2005&lt;/div&gt;
 
 
 
@@ -154,8 +154,8 @@
 
 &lt;b&gt;&lt;div style=&#34;text-align: left;&#34;&gt;A.S. Computer and Electronics Engineering&lt;/div&gt;&lt;/b&gt;
 &lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;ITT Technical Institute&lt;/div&gt;
-&lt;div style=&#34;text-align: center; width: 30%;  display: inline-block;&#34;&gt;San Diego, CA&lt;/div&gt;
-&lt;div style=&#34;text-align: right; width: 20%; display: inline-block;&#34;&gt;June 2003&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%;  display: inline-block;&#34;&gt;San Diego, CA&lt;/div&gt;
+&lt;div style=&#34;text-align: left; width: 20%; display: inline-block;&#34;&gt;June 2003&lt;/div&gt;
 </description>
             </item></channel>
 </rss>
