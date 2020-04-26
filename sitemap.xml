@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://lewis.fyi/</loc><lastmod>2020-04-24T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://lewis.fyi/posts/tf_loops/</loc><lastmod>2020-04-24T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://lewis.fyi/posts/</loc><lastmod>2020-04-24T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://lewis.fyi/about/</loc><priority>0</priority></url><url>
-            <loc>https://lewis.fyi/resume/</loc><priority>0</priority></url><url>
-            <loc>https://lewis.fyi/categories/</loc></url><url>
-            <loc>https://lewis.fyi/tags/</loc></url></urlset>
+            <loc>https://lewis.fyi/about/</loc></url><url>
+            <loc>https://lewis.fyi/resume/</loc></url><url>
+            <loc>https://lewis.fyi/categories/</loc><priority>0</priority></url><url>
+            <loc>https://lewis.fyi/posts/</loc><lastmod>2020-04-24T00:00:00&#43;00:00</lastmod><priority>0</priority></url><url>
+            <loc>https://lewis.fyi/tags/</loc><priority>0</priority></url><url>
+            <loc>https://lewis.fyi/</loc><lastmod>2020-04-24T00:00:00&#43;00:00</lastmod><priority>0</priority></url></urlset>
